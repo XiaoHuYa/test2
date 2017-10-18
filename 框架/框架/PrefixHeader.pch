@@ -1,0 +1,52 @@
+//
+//  PrefixHeader.pch
+//  框架
+//
+//  Created by 陈迪 on 16/3/1.
+//  Copyright (c) 2016年 chenDi. All rights reserved.
+//
+
+#ifndef ___PrefixHeader_pch
+#define ___PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "UIView+Extension.h"  //写的分类
+#import "UIBarButtonItem+Extension.h"
+#import "UIWindow+Extension.h"
+#import "NSDate+Extension.h"
+#import "NSString+Extension.h"
+#import "NSString+Emoji.h"
+#import "UITextView+Extension.h"
+
+#import "NetRequestTool.h" //网络请求层
+
+
+#ifdef  DEBUG //开发阶段
+#define CLog(...)  NSLog(__VA_ARGS__)
+#else   //发布阶段
+#define CLog(...)
+#endif
+
+//RGB
+#define CDColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+//随机色
+#define CDRandomColor CDColor(arc4random_uniform(256),arc4random_uniform(256),arc4random_uniform(256))
+
+//宏定义AlertView
+#define SHOW_ALERT(_message_) UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:_message_ delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil]; \
+[alert show];
+
+//系统操作系统版本
+#define IOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+
+//屏幕宽高
+#define MainSW [[UIScreen mainScreen] bounds].size.width
+#define MainSH [[UIScreen mainScreen] bounds].size.height
+
+
+
+
+#endif
